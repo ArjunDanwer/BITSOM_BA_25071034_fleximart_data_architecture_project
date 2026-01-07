@@ -1,5 +1,13 @@
 # FlexiMart Data Architecture Project
 
+**Student Name:** Arjun Danwer
+
+**Student ID:** BITSOM_BA_25071034
+
+**Email:** arjundanwer@yahoo.com
+
+**Date:** 7 January 2026
+
 ## Project Overview
 
 This project demonstrates an end-to-end data architecture implementation for an e-commerce platform called FlexiMart.
@@ -14,12 +22,59 @@ The project is divided into three major phases:
 2. NoSQL implementation using MongoDB for product catalogs
 3. Star-schema based data warehouse for analytics
 
+Fleximart-data-architecture/
+
+├── Data/
+
+│ ├── customers_raw.csv
+
+│ ├── Products_raw.csv
+
+│ └── Sales_raw.csv
+
+│
+
+├── Part1_DB_ETL/
+
+│ ├── etl_pipeline.py
+
+│ ├── schema_documentation.md
+
+│ ├── business_Queries.sql
+
+│ └── data_quality_report.txt
+
+│
+
+├── Part2_nosql/
+
+│ ├── nosql_analysis.md
+
+│ ├── mongodb_operations.js
+
+│ └── products_catalog.json
+
+│
+
+├── Part3_DataWarehouse/
+
+│ ├── star_schema_design.md
+
+│ ├── warehouse_schema.sql
+
+│ ├── warehouse_data.sql
+
+│ └── analytics_queries.sql
+
+│
+
+└── Readme.md
 
 ## Tech Stack
 
-- Python: Data cleaning and ETL pipeline
-- MySQL: Relational database and data warehouse
-- MongoDB: NoSQL document database
+- Python 3.12: Data cleaning and ETL pipeline
+- MySQL 8.0: Relational database and data warehouse
+- MongoDB 6.0: NoSQL document database
 - Pandas: CSV processing and transformation
 - VS Code: Development environment
 
@@ -93,6 +148,28 @@ This design enables fast analytical queries such as:
    ```bash
    python part1-database-etl/etl_pipeline.py
 
+### Database Setup
+
+## Create databases
+mysql -u root -p -e "CREATE DATABASE fleximart;"
+mysql -u root -p -e "CREATE DATABASE fleximart_dw;"
+
+## Run Part 1 - ETL Pipeline
+python part1-database-etl/etl_pipeline.py
+
+## Run Part 1 - Business Queries
+mysql -u root -p fleximart < part1-database-etl/business_queries.sql
+
+## Run Part 3 - Data Warehouse
+mysql -u root -p fleximart_dw < part3-datawarehouse/warehouse_schema.sql
+mysql -u root -p fleximart_dw < part3-datawarehouse/warehouse_data.sql
+mysql -u root -p fleximart_dw < part3-datawarehouse/analytics_queries.sql
+
+
+### MongoDB Setup
+
+mongosh < part2-nosql/mongodb_operations.js
+
 
 ## Key Learnings
 
@@ -102,9 +179,9 @@ This design enables fast analytical queries such as:
 - Writing business-focused SQL analytics queries
 - Structuring an end-to-end data architecture project
 
-## Future Improvements
+## Challenges Faced
 
-- Automate data warehouse loading using scheduled ETL jobs
-- Add indexes for performance optimization
-- Visualize analytics using Power BI or Tableau
-- Implement Slowly Changing Dimensions (SCD)
+1. Maintaining referential integrity across fact and dimension tables
+   - Solution: Carefully generated surrogate keys and validated foreign key mappings before loading fact data.
+2. Designing realistic analytical data distributions
+   - Solution: Simulated weekday vs weekend sales patterns and varied product pricing and quantities to reflect real-world behavior.

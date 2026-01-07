@@ -1,0 +1,20 @@
+{
+  "product_id": "ELEC001",
+  "name": "Samsung Galaxy S21",
+  "category": "Electronics",
+  "price": 79999,
+  "stock": 150,
+  "specs": {
+    "ram": "8GB",
+    "storage": "128GB",
+    "camera": "64MP"
+  },
+  "reviews": [
+    {
+      "user": "U001",
+      "rating": 5,
+      "comment": "Excellent phone",
+      "date": "2024-01-15"
+    }
+  ]
+}
